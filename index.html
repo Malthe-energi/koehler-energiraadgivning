@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Køhler Energirådgivning</title>
+  <meta name="description" content="Professionel energirådgivning til erhvervsbygninger. Analyser, optimering og bæredygtige løsninger." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0f1c2e;
+      --navy2:  #162436;
+      --accent: #e8a020;
+      --accent2:#f0b840;
+      --text:   #e8edf3;
+      --muted:  #8a9bb0;
+      --card:   #1a2d42;
+      --border: #243650;
+      --white:  #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(15,28,46,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 64px;
+    }
+    .logo {
+      font-size: 1.05rem; font-weight: 700; color: var(--white);
+      letter-spacing: 0.02em; text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--accent); color: var(--navy);
+      padding: .45rem 1.2rem; border-radius: 6px;
+      font-weight: 600; font-size: 0.88rem;
+      text-decoration: none; transition: background .2s;
+    }
+    .nav-cta:hover { background: var(--accent2); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 6rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(232,160,32,0.08) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 50% at 20% 80%, rgba(26,77,120,0.3) 0%, transparent 60%);
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(232,160,32,0.12); border: 1px solid rgba(232,160,32,0.3);
+      color: var(--accent); border-radius: 50px;
+      padding: .35rem 1rem; font-size: .8rem; font-weight: 600;
+      margin-bottom: 1.5rem; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700; line-height: 1.15;
+      max-width: 680px; margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero p {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 520px; margin-bottom: 2.5rem; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: var(--navy);
+      padding: .75rem 1.8rem; border-radius: 8px;
+      font-weight: 700; font-size: .95rem; text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn-secondary {
+      border: 1px solid var(--border); color: var(--text);
+      padding: .75rem 1.8rem; border-radius: 8px;
+      font-weight: 500; font-size: .95rem; text-decoration: none;
+      transition: border-color .2s, transform .15s;
+    }
+    .btn-secondary:hover { border-color: var(--muted); transform: translateY(-1px); }
+
+    /* stats strip */
+    .stats {
+      background: var(--card); border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      padding: 0 2rem;
+    }
+    .stat {
+      padding: 2rem 1.5rem; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-size: 2rem; font-weight: 700; color: var(--accent);
+      display: block; line-height: 1;
+    }
+    .stat-label { font-size: .85rem; color: var(--muted); margin-top: .4rem; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      color: var(--accent); font-size: .78rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: .8rem;
+    }
+    h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 700; line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-lead {
+      color: var(--muted); font-size: 1rem; max-width: 560px;
+      margin-bottom: 3rem; line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    #ydelser { background: var(--navy2); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem;
+      transition: border-color .25s, transform .2s;
+    }
+    .service-card:hover {
+      border-color: rgba(232,160,32,0.5);
+      transform: translateY(-3px);
+    }
+    .service-icon {
+      width: 48px; height: 48px;
+      background: rgba(232,160,32,0.12);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .service-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .6rem; }
+    .service-card p { font-size: .9rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── PROCESS ── */
+    #proces { background: var(--navy); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0; position: relative;
+    }
+    .process-step {
+      padding: 2rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 0;
+      position: relative;
+    }
+    .process-step:first-child { border-radius: 12px 0 0 12px; }
+    .process-step:last-child  { border-radius: 0 12px 12px 0; }
+    .step-num {
+      font-size: 2.5rem; font-weight: 800; color: rgba(232,160,32,0.2);
+      line-height: 1; margin-bottom: .8rem;
+    }
+    .process-step h3 { font-size: .95rem; font-weight: 600; margin-bottom: .5rem; }
+    .process-step p  { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── OM ── */
+    #om { background: var(--navy2); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .about-text h2 { margin-bottom: 1rem; }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; line-height: 1.75; }
+    .about-highlights {
+      display: flex; flex-direction: column; gap: .6rem;
+      margin-top: 1.5rem;
+    }
+    .highlight {
+      display: flex; align-items: center; gap: .75rem;
+      font-size: .9rem;
+    }
+    .highlight::before {
+      content: '✓';
+      width: 22px; height: 22px;
+      background: rgba(232,160,32,0.15);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; font-weight: 700; flex-shrink: 0;
+      line-height: 22px; text-align: center;
+    }
+    .about-visual {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem;
+    }
+    .about-visual-title {
+      font-size: .78rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--accent); margin-bottom: 1.5rem;
+    }
+    .expertise-list { display: flex; flex-direction: column; gap: 1rem; }
+    .expertise-item { display: flex; flex-direction: column; gap: .4rem; }
+    .expertise-label {
+      display: flex; justify-content: space-between;
+      font-size: .85rem; color: var(--text);
+    }
+    .expertise-bar {
+      height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;
+    }
+    .expertise-fill {
+      height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 3px;
+    }
+
+    /* ── CONTACT ── */
+    #kontakt { background: var(--navy); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 4rem; align-items: start;
+    }
+    .contact-info h2 { margin-bottom: 1rem; }
+    .contact-info p { color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-detail {
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .contact-detail-icon {
+      width: 40px; height: 40px;
+      background: rgba(232,160,32,0.1); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-detail-text { font-size: .9rem; }
+    .contact-detail-label { color: var(--muted); font-size: .78rem; }
+
+    /* form */
+    .contact-form {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1rem; }
+    .form-group label { font-size: .82rem; font-weight: 600; color: var(--muted); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--navy); border: 1px solid var(--border);
+      color: var(--text); border-radius: 8px;
+      padding: .7rem 1rem; font-size: .9rem; font-family: inherit;
+      outline: none; transition: border-color .2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select option { background: var(--navy); }
+    .form-submit {
+      width: 100%; padding: .85rem;
+      background: var(--accent); color: var(--navy);
+      border: none; border-radius: 8px;
+      font-weight: 700; font-size: .95rem;
+      cursor: pointer; font-family: inherit;
+      transition: background .2s, transform .15s;
+    }
+    .form-submit:hover { background: var(--accent2); transform: translateY(-1px); }
+    .form-note {
+      text-align: center; font-size: .78rem; color: var(--muted);
+      margin-top: .8rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy2); border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem; text-align: center;
+      color: var(--muted); font-size: .85rem;
+    }
+    footer strong { color: var(--text); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .stats-inner { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .process-step:first-child { border-radius: 12px 12px 0 0; }
+      .process-step:last-child  { border-radius: 0 0 12px 12px; }
+      .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Køhler <span>Energi</span>rådgivning</a>
+    <ul class="nav-links">
+      <li><a href="#ydelser">Ydelser</a></li>
+      <li><a href="#proces">Proces</a></li>
+      <li><a href="#om">Om mig</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="#kontakt" class="nav-cta">Book møde</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-badge">⚡ Energirådgivning til erhverv</div>
+    <h1>Optimer dit <em>energiforbrug</em> — og sæt tal på potentialet</h1>
+    <p>Vi analyserer dine erhvervsbygningers el-, varme- og vandforbrug, identificerer besparelser og leverer en rapport du kan handle på med det samme.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">Få en gratis indledende snak</a>
+      <a href="#ydelser" class="btn-secondary">Se hvad vi tilbyder →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <span class="stat-num">15–30%</span>
+      <div class="stat-label">Typisk besparingspotentiale i erhvervsbygninger</div>
+    </div>
+    <div class="stat">
+      <span class="stat-num">CO₂</span>
+      <div class="stat-label">Reducér klimaaftryk — og overhold kommende krav</div>
+    </div>
+    <div class="stat">
+      <span class="stat-num">1 rapport</span>
+      <div class="stat-label">Klar til beslutning — ingen teknisk baggrund kræves</div>
+    </div>
+  </div>
+</div>
+
+<!-- YDELSER -->
+<section id="ydelser">
+  <div class="section-inner">
+    <span class="section-tag">Ydelser</span>
+    <h2>Hvad kan vi hjælpe med?</h2>
+    <p class="section-lead">Uanset om du ejer én bygning eller en portefølje, leverer vi analyser og anbefalinger der er direkte omsættelige til besparelser og bedre drift.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Energianalyse & kortlægning</h3>
+        <p>Gennemgang af el-, varme- og vandforbrug baseret på forbrugsdata og bygningsdata. Vi identificerer mønstre, standby-forbrug og anomalier.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Energirapport til beslutningstagere</h3>
+        <p>Klar, overskuelig rapport med status, benchmarks og prioriterede tiltag — tilpasset dig som ejer, ikke teknikerne.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>Optimeringsforslag & business case</h3>
+        <p>Konkrete tiltag med estimeret besparelse, investeringsbehov og tilbagebetalingstid. Du ved præcist hvad det koster og hvad du får tilbage.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">♻️</div>
+        <h3>VE-løsninger & bæredygtighed</h3>
+        <p>Vurdering af solceller, varmepumper og andre vedvarende energiløsninger — tilpasset din bygning og dine mål.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌡️</div>
+        <h3>Tekniske installationer</h3>
+        <p>Gennemgang af ventilation, varmeanlæg og CTS/BMS-systemer. Vi finder ineffektiviteter i driften og foreslår justeringer.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3>Løbende opfølgning & monitorering</h3>
+        <p>Vi følger op på implementerede tiltag, verificerer besparelser og sikrer at du fastholder effekten over tid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCES -->
+<section id="proces">
+  <div class="section-inner">
+    <span class="section-tag">Proces</span>
+    <h2>Fra data til beslutning — i fire trin</h2>
+    <p class="section-lead">En simpel, gennemsigtig proces der kræver minimalt fra din side. Vi henter data, analyserer og leverer.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3>Indledende dialog</h3>
+        <p>Gratis samtale om din bygningsmasse, ønsker og udfordringer. Vi afklarer hvad der giver mest mening.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3>Dataindsamling</h3>
+        <p>Vi indhenter forbrugsdata fra forsyningsselskaber og eventuelle eksisterende målinger.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3>Analyse & modellering</h3>
+        <p>Dybdegående analyse af forbrug, benchmarks, graddagekorrigering og potentielle besparelser.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h3>Rapport & præsentation</h3>
+        <p>Levering af rapport med gennemgang. Klare prioriteringer og next steps du kan handle på.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OM -->
+<section id="om">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-tag">Om mig</span>
+        <h2>Specialiseret i energi i erhvervsbygninger</h2>
+        <p>Jeg er Malthe Køhler og studerer Energimanagement med speciale i energifysik i bygninger, tekniske installationer og vedvarende energi.</p>
+        <p>Mit fokus er erhvervsejendomme — ejendomsselskaber, udlejere og investorer der vil have styr på energiøkonomien i deres portefølje og være klar til kommende lovkrav om energieffektivisering.</p>
+        <p>Jeg kombinerer ingeniørfaglig analyse med en forretningsmæssig tilgang, så du får konkrete tal og handlingsorienterede anbefalinger — ikke kun tekniske rapporter.</p>
+        <div class="about-highlights">
+          <div class="highlight">Energimanagement-uddannelse med fokus på erhverv</div>
+          <div class="highlight">Energifysik og bygningsanalyse</div>
+          <div class="highlight">Tekniske installationer (varme, ventilation, CTS)</div>
+          <div class="highlight">Vedvarende energi og bæredygtighed</div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-visual-title">Faglige kompetencer</div>
+        <div class="expertise-list">
+          <div class="expertise-item">
+            <div class="expertise-label"><span>Energianalyse & datamodellering</span><span>92%</span></div>
+            <div class="expertise-bar"><div class="expertise-fill" style="width:92%"></div></div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-label"><span>Varmeanlæg & ventilation</span><span>85%</span></div>
+            <div class="expertise-bar"><div class="expertise-fill" style="width:85%"></div></div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-label"><span>Solceller & VE-teknologier</span><span>80%</span></div>
+            <div class="expertise-bar"><div class="expertise-fill" style="width:80%"></div></div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-label"><span>Bygningsfysik & energibalance</span><span>88%</span></div>
+            <div class="expertise-bar"><div class="expertise-fill" style="width:88%"></div></div>
+          </div>
+          <div class="expertise-item">
+            <div class="expertise-label"><span>Ejendomsøkonomi & business case</span><span>75%</span></div>
+            <div class="expertise-bar"><div class="expertise-fill" style="width:75%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="section-tag">Kontakt</span>
+        <h2>Lad os tage en snak om dine bygninger</h2>
+        <p>Udfyld formularen, så vender jeg tilbage inden for én hverdag. Den indledende samtale er gratis og uforpligtende.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📧</div>
+            <div class="contact-detail-text">
+              <div class="contact-detail-label">E-mail</div>
+              <div>malthekviktor@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">
+              <div class="contact-detail-label">Arbejdsområde</div>
+              <div>Danmark</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">⚡</div>
+            <div class="contact-detail-text">
+              <div class="contact-detail-label">Specialisering</div>
+              <div>Erhvervsbygninger &amp; ejendomsporteføljer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form action="https://formspree.io/f/xqewkyyl" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Navn</label>
+              <input type="text" id="name" name="name" placeholder="Dit navn" required />
+            </div>
+            <div class="form-group">
+              <label for="company">Virksomhed</label>
+              <input type="text" id="company" name="company" placeholder="Firmanavn" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="din@mail.dk" required />
+          </div>
+          <div class="form-group">
+            <label for="interest">Hvad er I interesserede i?</label>
+            <select id="interest" name="interest">
+              <option value="">Vælg en ydelse...</option>
+              <option>Energianalyse & kortlægning</option>
+              <option>Energirapport til beslutningstagere</option>
+              <option>Optimeringsforslag & business case</option>
+              <option>VE-løsninger & bæredygtighed</option>
+              <option>Løbende opfølgning</option>
+              <option>Ved ikke endnu — vil bare tale sammen</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Kort om jeres situation</label>
+            <textarea id="message" name="message" placeholder="Antal bygninger, samlet areal, nuværende udfordringer..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send henvendelse →</button>
+          <p class="form-note">Svar inden for én hverdag. Ingen spam, nogensinde.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Køhler Energirådgivning</strong> &nbsp;·&nbsp; Professionel energirådgivning til erhvervsbygninger<br />
+  <span style="margin-top:.5rem;display:inline-block;">© 2026 Malthe Køhler &nbsp;·&nbsp; malthekviktor@gmail.com</span></p>
+</footer>
+
+</body>
+</html>
