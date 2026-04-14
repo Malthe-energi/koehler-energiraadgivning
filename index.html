@@ -134,6 +134,128 @@
     }
     .stat-label { font-size: .85rem; color: var(--muted); margin-top: .4rem; }
 
+    /* ── ENERGICHECK PRO ── */
+    #produkt { background: var(--navy); }
+    .produkt-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .kampagne-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(232,160,32,0.15); border: 1px solid rgba(232,160,32,0.4);
+      color: var(--accent); border-radius: 50px;
+      padding: .35rem 1rem; font-size: .78rem; font-weight: 700;
+      margin-bottom: 1rem; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .produkt-tagline {
+      font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;
+    }
+    .produkt-liste {
+      list-style: none; display: flex; flex-direction: column; gap: .75rem;
+      margin-bottom: 2rem;
+    }
+    .produkt-liste li {
+      display: flex; align-items: flex-start; gap: .75rem;
+      font-size: .95rem; color: var(--text);
+    }
+    .produkt-liste li::before {
+      content: '✓';
+      color: var(--accent); font-weight: 700; font-size: 1rem;
+      flex-shrink: 0; margin-top: .05rem;
+    }
+    .pris-boks {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem 2rem;
+      margin-bottom: 1.2rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .pris-hoved {
+      font-size: 1.6rem; font-weight: 700; color: var(--white);
+    }
+    .pris-hoved span { color: var(--accent); }
+    .pris-sub { font-size: .82rem; color: var(--muted); margin-top: .2rem; }
+    .kampagne-pris {
+      background: rgba(232,160,32,0.12); border: 1px solid rgba(232,160,32,0.3);
+      border-radius: 8px; padding: .6rem 1rem; text-align: center;
+    }
+    .kampagne-pris-num { font-size: 1.3rem; font-weight: 700; color: var(--accent); }
+    .kampagne-pris-label { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .garanti-boks {
+      display: flex; align-items: center; gap: .75rem;
+      background: rgba(232,160,32,0.06); border: 1px solid rgba(232,160,32,0.2);
+      border-radius: 10px; padding: 1rem 1.4rem;
+      margin-bottom: 2rem; font-size: .88rem; color: var(--muted);
+    }
+    .garanti-boks strong { color: var(--text); }
+    .garanti-ikon { font-size: 1.4rem; flex-shrink: 0; }
+    .rapport-mockup {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+    .rapport-mockup svg { filter: drop-shadow(0 24px 60px rgba(0,0,0,0.55)); width: 100%; max-width: 360px; }
+
+    /* ── PRISBEREGNER ── */
+    .pris-beregner {
+      margin-top: 4rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem 3rem;
+    }
+    .beregner-header { margin-bottom: 2rem; }
+    .beregner-header h3 { font-size: 1.3rem; font-weight: 700; margin-top: .3rem; }
+    .slider-wrapper { position: relative; margin-bottom: 1rem; }
+    .m2-slider {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 6px;
+      border-radius: 3px; outline: none; cursor: pointer;
+      background: linear-gradient(90deg, #e8a020 0%, #243650 0%);
+      transition: background .05s;
+    }
+    .m2-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--accent); border: 3px solid var(--navy);
+      box-shadow: 0 0 0 2px var(--accent), 0 4px 12px rgba(232,160,32,0.4);
+      cursor: grab; transition: transform .15s;
+    }
+    .m2-slider::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.15); }
+    .m2-slider::-moz-range-thumb {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--accent); border: 3px solid var(--navy);
+      box-shadow: 0 0 0 2px var(--accent); cursor: grab;
+    }
+    .slider-etiketter {
+      display: flex; justify-content: space-between;
+      margin-top: 1rem;
+    }
+    .slider-etiket {
+      font-size: .78rem; color: var(--muted); text-align: center;
+      display: flex; flex-direction: column; gap: .15rem;
+    }
+    .slider-etiket strong { color: var(--text); font-size: .82rem; }
+    .beregner-resultat {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      margin-top: 2rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .resultat-m2 { font-size: 1rem; color: var(--muted); }
+    .resultat-m2 span { color: var(--text); font-weight: 700; font-size: 1.2rem; }
+    .resultat-pris { text-align: right; }
+    .resultat-pris-num {
+      font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1;
+    }
+    .resultat-pris-label { font-size: .82rem; color: var(--muted); margin-top: .2rem; }
+    .stor-bygning-msg {
+      display: none;
+      margin-top: 1.5rem;
+      background: rgba(232,160,32,0.08); border: 1px solid rgba(232,160,32,0.25);
+      border-radius: 10px; padding: 1rem 1.4rem;
+      font-size: .9rem; color: var(--muted); line-height: 1.6;
+    }
+    .stor-bygning-msg a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .stor-bygning-msg a:hover { text-decoration: underline; }
+
     /* ── SECTIONS ── */
     section { padding: 6rem 2rem; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
@@ -359,6 +481,7 @@
       .stats-inner { grid-template-columns: 1fr; }
       .stat { border-right: none; border-bottom: 1px solid var(--border); }
       .stat:last-child { border-bottom: none; }
+      .produkt-grid,
       .about-grid,
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
       .form-row { grid-template-columns: 1fr; }
@@ -375,6 +498,7 @@
   <div class="nav-inner">
     <a href="#" class="logo">Køhler <span>Energi</span>rådgivning</a>
     <ul class="nav-links">
+      <li><a href="#produkt">EnergiCheck Pro</a></li>
       <li><a href="#ydelser">Ydelser</a></li>
       <li><a href="#proces">Proces</a></li>
       <li><a href="#cases">Cases</a></li>
@@ -415,6 +539,146 @@
     </div>
   </div>
 </div>
+
+<!-- ENERGICHECK PRO -->
+<section id="produkt">
+  <div class="section-inner">
+    <div class="produkt-grid">
+      <div class="produkt-text">
+        <div class="kampagne-badge">🔥 Kampagnetilbud · 4 kr./m²</div>
+        <span class="section-tag">Vores produkt</span>
+        <h2>EnergiCheck Pro</h2>
+        <p class="produkt-tagline">Komplet energianalyse af din ejendom. Fast pris. Ingen overraskelser. <strong>Garanteret dokumenteret optimeringspotentiale</strong> — eller pengene retur.</p>
+        <ul class="produkt-liste">
+          <li>Komplet analyse af el-, varme- og vandforbrug</li>
+          <li>Identifikation af konkret energispild og ineffektiv drift</li>
+          <li>Prioriterede optimeringsforslag med estimeret besparelse</li>
+          <li>CO₂-dokumentation af dit forbrug og besparelsespotentiale</li>
+          <li>Personlig gennemgang og dialog om rapporten</li>
+          <li>Klar guide til hvilke tiltag der giver mest på bundlinjen</li>
+        </ul>
+        <div class="pris-boks">
+          <div>
+            <div class="pris-hoved"><span>5 kr.</span>/m² · min. 800 kr. ekskl. moms</div>
+            <div class="pris-sub">Fast pris — ingen timebetaling, ingen overraskelser</div>
+          </div>
+          <div class="kampagne-pris">
+            <div class="kampagne-pris-num">4 kr./m²</div>
+            <div class="kampagne-pris-label">Kampagne nu</div>
+          </div>
+        </div>
+        <div class="garanti-boks">
+          <span class="garanti-ikon">🛡️</span>
+          <div><strong>Garanti:</strong> Vi finder dokumenteret optimeringspotentiale i din ejendom — ellers betaler du ingenting.</div>
+        </div>
+        <a href="#kontakt" class="btn-primary">Bestil din EnergiCheck Pro →</a>
+      </div>
+      <div class="rapport-mockup">
+        <svg viewBox="0 0 360 490" xmlns="http://www.w3.org/2000/svg">
+          <!-- Side pages -->
+          <g transform="rotate(7, 180, 250)">
+            <rect x="40" y="30" width="280" height="400" rx="7" fill="#0a1520" stroke="#1e3050" stroke-width="1"/>
+          </g>
+          <g transform="rotate(3.5, 180, 250)">
+            <rect x="40" y="30" width="280" height="400" rx="7" fill="#101e30" stroke="#1e3050" stroke-width="1"/>
+          </g>
+          <!-- Main cover -->
+          <rect x="40" y="30" width="280" height="400" rx="7" fill="#1a2d42" stroke="#243650" stroke-width="1"/>
+          <!-- Gold top bar -->
+          <rect x="40" y="30" width="280" height="6" rx="5" fill="#e8a020"/>
+          <!-- Logo -->
+          <text x="55" y="62" font-family="Inter,Arial,sans-serif" font-size="9.5" font-weight="700" fill="#e8a020" letter-spacing="1.2">KØHLER ENERGIRÅDGIVNING</text>
+          <line x1="55" y1="70" x2="305" y2="70" stroke="#243650" stroke-width="1"/>
+          <!-- Tag -->
+          <rect x="55" y="80" width="100" height="18" rx="9" fill="rgba(232,160,32,0.15)" stroke="rgba(232,160,32,0.4)" stroke-width="1"/>
+          <text x="105" y="92" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="700" fill="#e8a020" text-anchor="middle" letter-spacing="0.8">ENERGICHECK PRO</text>
+          <!-- Title -->
+          <text x="55" y="130" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff">Energianalyse</text>
+          <text x="55" y="154" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" fill="#ffffff">Rapport</text>
+          <text x="55" y="175" font-family="Inter,Arial,sans-serif" font-size="10" fill="#8a9bb0" letter-spacing="0.3">El · Varme · Vand · Optimeringspotentiale</text>
+          <!-- Chart area -->
+          <rect x="55" y="192" width="230" height="118" rx="5" fill="#0f1c2e"/>
+          <!-- El -->
+          <text x="65" y="212" font-family="Inter,Arial,sans-serif" font-size="7.5" fill="#8a9bb0" letter-spacing="0.5">EL</text>
+          <rect x="65" y="217" width="160" height="7" rx="3" fill="#243650"/>
+          <rect x="65" y="217" width="128" height="7" rx="3" fill="#e8a020"/>
+          <text x="238" y="224" font-family="Inter,Arial,sans-serif" font-size="7" fill="#e8a020" text-anchor="end">80%</text>
+          <!-- Varme -->
+          <text x="65" y="238" font-family="Inter,Arial,sans-serif" font-size="7.5" fill="#8a9bb0" letter-spacing="0.5">VARME</text>
+          <rect x="65" y="243" width="160" height="7" rx="3" fill="#243650"/>
+          <rect x="65" y="243" width="105" height="7" rx="3" fill="#d05820"/>
+          <text x="238" y="250" font-family="Inter,Arial,sans-serif" font-size="7" fill="#d05820" text-anchor="end">66%</text>
+          <!-- Vand -->
+          <text x="65" y="264" font-family="Inter,Arial,sans-serif" font-size="7.5" fill="#8a9bb0" letter-spacing="0.5">VAND</text>
+          <rect x="65" y="269" width="160" height="7" rx="3" fill="#243650"/>
+          <rect x="65" y="269" width="72" height="7" rx="3" fill="#2878c8"/>
+          <text x="238" y="276" font-family="Inter,Arial,sans-serif" font-size="7" fill="#2878c8" text-anchor="end">45%</text>
+          <!-- Potentiale box -->
+          <rect x="200" y="207" width="75" height="90" rx="5" fill="#1a2d42" stroke="#e8a020" stroke-width="1"/>
+          <text x="237" y="228" font-family="Inter,Arial,sans-serif" font-size="7.5" fill="#8a9bb0" text-anchor="middle" letter-spacing="0.4">POTENTIALE</text>
+          <text x="237" y="258" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="700" fill="#e8a020" text-anchor="middle">22%</text>
+          <text x="237" y="276" font-family="Inter,Arial,sans-serif" font-size="7" fill="#8a9bb0" text-anchor="middle">besparelse</text>
+          <text x="237" y="291" font-family="Inter,Arial,sans-serif" font-size="7" fill="#e8a020" text-anchor="middle">dokumenteret</text>
+          <!-- Cards row -->
+          <rect x="55" y="322" width="68" height="52" rx="4" fill="#0f1c2e" stroke="#1e3050" stroke-width="1"/>
+          <text x="89" y="342" font-family="Inter,Arial,sans-serif" font-size="6.5" fill="#8a9bb0" text-anchor="middle" letter-spacing="0.4">FORBRUG</text>
+          <text x="89" y="358" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="600" fill="#e8edf3" text-anchor="middle">Kortlægning</text>
+          <rect x="131" y="322" width="68" height="52" rx="4" fill="#0f1c2e" stroke="#1e3050" stroke-width="1"/>
+          <text x="165" y="342" font-family="Inter,Arial,sans-serif" font-size="6.5" fill="#8a9bb0" text-anchor="middle" letter-spacing="0.4">TILTAG</text>
+          <text x="165" y="358" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="600" fill="#e8edf3" text-anchor="middle">Optimering</text>
+          <rect x="207" y="322" width="68" height="52" rx="4" fill="#0f1c2e" stroke="#1e3050" stroke-width="1"/>
+          <text x="241" y="342" font-family="Inter,Arial,sans-serif" font-size="6.5" fill="#8a9bb0" text-anchor="middle" letter-spacing="0.4">ØKONOMI</text>
+          <text x="241" y="358" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="600" fill="#e8edf3" text-anchor="middle">Business case</text>
+          <!-- Footer -->
+          <line x1="55" y1="388" x2="305" y2="388" stroke="#243650" stroke-width="1"/>
+          <text x="55" y="404" font-family="Inter,Arial,sans-serif" font-size="7.5" fill="#8a9bb0">Fortrolig · Køhler Energirådgivning</text>
+          <text x="305" y="404" font-family="Inter,Arial,sans-serif" font-size="7.5" fill="#e8a020" text-anchor="end">2025</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- PRISBEREGNER -->
+    <div class="pris-beregner">
+      <div class="beregner-header">
+        <span class="section-tag">Prisberegner</span>
+        <h3>Hvad koster EnergiCheck Pro for din ejendom?</h3>
+      </div>
+      <div class="slider-wrapper">
+        <input type="range" min="200" max="10000" value="200" step="100"
+               id="m2-slider" class="m2-slider" oninput="opdaterBeregner(this.value)">
+        <div class="slider-etiketter">
+          <div class="slider-etiket"><strong>Lille bygning</strong>200 m²</div>
+          <div class="slider-etiket"><strong>Mellemstor bygning</strong>~5.000 m²</div>
+          <div class="slider-etiket"><strong>Stor bygning</strong>10.000+ m²</div>
+        </div>
+      </div>
+      <div class="beregner-resultat">
+        <div class="resultat-m2">Areal: <span id="m2-vis">200 m²</span></div>
+        <div class="resultat-pris">
+          <div class="resultat-pris-num" id="pris-vis">800 kr.</div>
+          <div class="resultat-pris-label">ekskl. moms · kampagnepris 4 kr./m²</div>
+        </div>
+      </div>
+      <div class="stor-bygning-msg" id="stor-bygning-msg">
+        🏢 Din ejendom er i den større kategori — <a href="#kontakt">tag kontakt til os</a>, så finder vi et helt særligt tilbud til dig og din virksomhed.
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function opdaterBeregner(val) {
+    const m2 = parseInt(val);
+    const pris = Math.max(800, m2 * 4);
+    const pct = ((m2 - 200) / (10000 - 200)) * 100;
+
+    document.getElementById('m2-vis').textContent = m2.toLocaleString('da-DK') + ' m²';
+    document.getElementById('pris-vis').textContent = pris.toLocaleString('da-DK') + ' kr.';
+    document.getElementById('m2-slider').style.background =
+      `linear-gradient(90deg, #e8a020 ${pct}%, #243650 ${pct}%)`;
+    document.getElementById('stor-bygning-msg').style.display = m2 >= 9000 ? 'block' : 'none';
+  }
+</script>
 
 <!-- YDELSER -->
 <section id="ydelser">
