@@ -205,7 +205,7 @@
     #om { background: var(--navy2); }
     .about-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
+      gap: 4rem; align-items: stretch;
     }
     .about-text h2 { margin-bottom: 1rem; }
     .about-text p { color: var(--muted); margin-bottom: 1rem; line-height: 1.75; }
@@ -228,25 +228,24 @@
       line-height: 22px; text-align: center;
     }
     .about-visual {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 2.5rem;
+      border-radius: 16px; overflow: hidden;
+      width: 100%; align-self: stretch;
+    }
+    .about-photo {
+      width: 100%; height: 100%; min-height: 480px;
+      object-fit: cover; object-position: center 15%;
+      display: block;
+      transform: scale(1.15);
+      transform-origin: center 20%;
+    }
+    .about-photo-placeholder {
+      width: 100%; height: 100%; min-height: 480px;
+      background: var(--navy); display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; color: var(--border);
     }
     .about-visual-title {
       font-size: .78rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: .1em; color: var(--accent); margin-bottom: 1.5rem;
-    }
-    .expertise-list { display: flex; flex-direction: column; gap: 1rem; }
-    .expertise-item { display: flex; flex-direction: column; gap: .4rem; }
-    .expertise-label {
-      display: flex; justify-content: space-between;
-      font-size: .85rem; color: var(--text);
-    }
-    .expertise-bar {
-      height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;
-    }
-    .expertise-fill {
-      height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2));
-      border-radius: 3px;
+      letter-spacing: .1em; color: var(--accent); margin-bottom: 1rem;
     }
 
     /* ── CONTACT ── */
@@ -305,6 +304,47 @@
       margin-top: .8rem;
     }
 
+    /* ── CASES ── */
+    #cases { background: var(--navy2); }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 2rem;
+    }
+    .case-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: border-color .25s, transform .2s;
+    }
+    .case-card:hover {
+      border-color: rgba(232,160,32,0.45);
+      transform: translateY(-4px);
+    }
+    .case-img-wrap { position: relative; }
+    .case-img-wrap img {
+      width: 100%; height: 240px;
+      object-fit: cover; display: block;
+    }
+    .case-tag {
+      position: absolute; bottom: .9rem; left: .9rem;
+      background: rgba(15,28,46,0.88); backdrop-filter: blur(6px);
+      color: var(--accent); border: 1px solid rgba(232,160,32,0.35);
+      border-radius: 50px; padding: .28rem .85rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+    }
+    .case-body { padding: 1.8rem 2rem 2rem; }
+    .case-body h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: .9rem; }
+    .case-body p { font-size: .9rem; color: var(--muted); line-height: 1.7; margin-bottom: .8rem; }
+    .case-body p strong { color: var(--accent); font-weight: 700; }
+    .case-meta {
+      margin-top: 1.2rem; padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: .78rem; color: var(--muted);
+    }
+    @media (max-width: 768px) {
+      .cases-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--navy2); border-top: 1px solid var(--border);
@@ -337,6 +377,7 @@
     <ul class="nav-links">
       <li><a href="#ydelser">Ydelser</a></li>
       <li><a href="#proces">Proces</a></li>
+      <li><a href="#cases">Cases</a></li>
       <li><a href="#om">Om mig</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
     </ul>
@@ -447,6 +488,46 @@
   </div>
 </section>
 
+<!-- CASES -->
+<section id="cases">
+  <div class="section-inner">
+    <span class="section-tag">Cases</span>
+    <h2>Resultater fra praksis</h2>
+    <p class="section-lead">Eksempler på analyser og fund fra virkelige projekter – med fokus på det der tæller: præcise tekniske fund og dokumenterede potentialer.</p>
+    <div class="cases-grid">
+
+      <!-- Case 1 -->
+      <div class="case-card">
+        <div class="case-img-wrap">
+          <img src="case1.png" alt="Varmtvandsinstallationer og termografi" />
+          <div class="case-tag">Varmtvandsanlæg & installationer</div>
+        </div>
+        <div class="case-body">
+          <h3>Skjult energispild i sommerdrift</h3>
+          <p>En kontorejendom brugte markant mere varme end sammenlignelige ejendomme – også i sommermånederne, hvor der ingen behov er for opvarmning. Med fysiske opmålinger og tekniske VVS-beregninger på stedet blev kilden præcist identificeret: cirkulationspumpen kørte kontinuerligt og afgav konstant varme til omgivelserne.</p>
+          <p>I én enkelt bygning udgjorde cirkulationstabet <strong>20.380 kWh rent spild</strong> pr. sommer. Skaleret til hele ejendommen estimeres potentialet til op mod <strong>5,9 mio. kr. over 50 år</strong> med en CO₂-besparelse på ca. <strong>178 ton</strong>.</p>
+          <div class="case-meta">📐 Afgangsprojekt · Energiteknolog, KEA &nbsp;·&nbsp; Anonymiseret</div>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="case-card">
+        <div class="case-img-wrap">
+          <img src="case2.png" alt="Energidashboard og kontorbygning" />
+          <div class="case-tag">Dataanalyse & energiledelse</div>
+        </div>
+        <div class="case-body">
+          <h3>Fra rådata til reelt reduktionsmål</h3>
+          <p>En institution med en kompleks bygningsportefølje ønskede konkrete, datadrevne energimål. Rå forbrugstal er ikke sammenlignelige, fordi vejret skjuler de reelle forskelle. En regressionsanalyse af varmeforbruget viste en forklaringsgrad på <strong>R² = 0,91</strong> og skabte grundlaget for en temperaturkorrigeret baseline.</p>
+          <p>Ud fra bygningens egne historiske driftsdata – ikke et eksternt benchmark – blev et besparelsespotentiale på ca. <strong>15% af varmeforbruget</strong> dokumenteret, kombineret med CO₂-dokumentation og strukturerede energimål for hele porteføljen.</p>
+          <div class="case-meta">📐 Semesterprojekt · Energimanagement, KEA &nbsp;·&nbsp; Anonymiseret</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- OM -->
 <section id="om">
   <div class="section-inner">
@@ -454,40 +535,21 @@
       <div class="about-text">
         <span class="section-tag">Om mig</span>
         <h2>Specialiseret i energi i erhvervsbygninger</h2>
-        <p>Jeg er Malthe Køhler og studerer Energimanagement med speciale i energifysik i bygninger, tekniske installationer og vedvarende energi.</p>
-        <p>Mit fokus er erhvervsejendomme — ejendomsselskaber, udlejere og investorer der vil have styr på energiøkonomien i deres portefølje og være klar til kommende lovkrav om energieffektivisering.</p>
-        <p>Jeg kombinerer ingeniørfaglig analyse med en forretningsmæssig tilgang, så du får konkrete tal og handlingsorienterede anbefalinger — ikke kun tekniske rapporter.</p>
+        <p>Jeg er Malthe Køhler – uddannet Energiteknolog og studerende på Energimanagement. Mit arbejde tager altid udgangspunkt i, hvad bygningen <em>faktisk</em> bruger – ikke hvad en beregningsmodel forudsiger.</p>
+        <p>Gennem energimærkning af erhvervsbygninger på tilsammen <strong style="color:var(--text)">flere tusinde etagemeter</strong> har jeg set på tæt hold, hvor det teoretiske energimærke ikke er tilstrækkeligt grundlag for at prioritere investeringer. Der er ofte langt fra beregning til virkelighed – og det er præcis den kløft, mine analyser adresserer.</p>
+        <p>Jeg er uafhængig rådgiver. Ingen bindinger til leverandører, ingen salg af produkter – kun analyse i din interesse.</p>
         <div class="about-highlights">
-          <div class="highlight">Energimanagement-uddannelse med fokus på erhverv</div>
-          <div class="highlight">Energifysik og bygningsanalyse</div>
-          <div class="highlight">Tekniske installationer (varme, ventilation, CTS)</div>
-          <div class="highlight">Vedvarende energi og bæredygtighed</div>
+          <div class="highlight">Energimærkning af erhvervsbygninger (tusindvis af m²)</div>
+          <div class="highlight">VE-certificeret montør: solceller & varmepumper</div>
+          <div class="highlight">Certificeret Energikonsulent</div>
+          <div class="highlight">Tekniske VVS-beregninger og installationsanalyse</div>
+          <div class="highlight">Uafhængig — ingen leverandørbindinger</div>
         </div>
       </div>
       <div class="about-visual">
-        <div class="about-visual-title">Faglige kompetencer</div>
-        <div class="expertise-list">
-          <div class="expertise-item">
-            <div class="expertise-label"><span>Energianalyse & datamodellering</span><span>92%</span></div>
-            <div class="expertise-bar"><div class="expertise-fill" style="width:92%"></div></div>
-          </div>
-          <div class="expertise-item">
-            <div class="expertise-label"><span>Varmeanlæg & ventilation</span><span>85%</span></div>
-            <div class="expertise-bar"><div class="expertise-fill" style="width:85%"></div></div>
-          </div>
-          <div class="expertise-item">
-            <div class="expertise-label"><span>Solceller & VE-teknologier</span><span>80%</span></div>
-            <div class="expertise-bar"><div class="expertise-fill" style="width:80%"></div></div>
-          </div>
-          <div class="expertise-item">
-            <div class="expertise-label"><span>Bygningsfysik & energibalance</span><span>88%</span></div>
-            <div class="expertise-bar"><div class="expertise-fill" style="width:88%"></div></div>
-          </div>
-          <div class="expertise-item">
-            <div class="expertise-label"><span>Ejendomsøkonomi & business case</span><span>75%</span></div>
-            <div class="expertise-bar"><div class="expertise-fill" style="width:75%"></div></div>
-          </div>
-        </div>
+        <img src="malthe.jpg" alt="Malthe Køhler" class="about-photo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="about-photo-placeholder" style="display:none;">👤</div>
       </div>
     </div>
   </div>
